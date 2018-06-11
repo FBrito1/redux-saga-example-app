@@ -7,8 +7,11 @@ import sagas from './sagas';
 // middlewares da aplicação
 const middlewares = [];
 
+// config reactotron saga
+const sagaMonitor = process.env.NODE_ENV === 'development' ? console.tron.createSagaMonitor() : null;
+
 // instância do sagaMiddleware
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
 middlewares.push(sagaMiddleware);
 
